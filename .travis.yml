@@ -3,9 +3,11 @@ services:
   - docker
 language: bash
 env:
+  global:
+    - HYPRIOT_HOSTNAME=prisms-gateway
+    - HYPRIOT_USERNAME=prisms
+    - HYPRIOT_PASSWORD=clean_AIR?
   matrix:
-    - MAKE_TARGET=arm64-debian
-    - MAKE_TARGET=armhf-debian
     - MAKE_TARGET=armhf-raspbian
 script:
   - make shellcheck
@@ -13,7 +15,7 @@ script:
 branches:
   only:
     - master
-    - /^v\d.*$/
+    - "/^v\\d.*$/"
 deploy:
   provider: releases
   skip_cleanup: true
@@ -22,6 +24,6 @@ deploy:
     - rootfs-${MAKE_TARGET}-${TRAVIS_TAG}.tar.gz.sha256
   on:
     tags: true
-    repo: hypriot/os-rootfs
+    repo: VDL-PRISM/os-rootfs
   api_key:
-    secure: EMPAsheQaVn8DrLDuh74qmG8I+OVfB5g+dRXp2U55B39NBULHV+nDgjXJR0k4tHnGY9+azsMYkJXziphKQzmpMsFpiNbeBRg0dhWNJyB6V7xIIchxcNiEBc+qhbsDLAeByjoXSLV3IE/bvnQRhTydHqsq60/EetpBTWv/afK03w43AwOBABDiYZonE5HXgrgP0L7CHg4l/hc3KCfisc4SykOqzSmlJ6JD+YZGNWe1cwb5Plf9iardfYn/U3gYpTWhqC19fV6kUNb7mB76TNv4mlbQLnC8/Yie/Z/a+QaSGDQAGzduzxlb2m/5Gbm7BRGN4XD97JdHRIkAuOCEqLsRwzQBfiRX9A5cG/SRHYWomaPh+10+4hx8pwCxvnhHFh4nuDinIkUmxwKpX7HAcq6hVQb0KVBQaZ6qo2tisDlEG4L3HMU/sddae/MA33Nk25Ql3dA67zBDB1Lf/d0Z/9oKDqBwNs8lI4soFM1/cTel3sXwnbIJWROvVOphABc1sGQlRF5HMJZODmVeYag+h4/u/njgA4uW/p8DEbSDT56pHvEfvZdjAl1zrDUJmTP509TsTkfHsBNIjxnAFbCVSgCOD3OdnbuM+5mzoK4foTUZNV0/TjcCY858wKiPE3LZIpZW3G6HtyLbyZ9n7ABsxs48npfSbjpH6umpGiW5IrA9uI=
+    secure: Ye2JqZl+RZktpIA8ISD8obBBKvOA7lr3txQbVjZsJubsMUnMUU8WxcD5gcMJY7hdz47yF09TczcmPWfBHiV1nwjcKNPVOkLealf+mS8F97MhLm/jXGpDg7Vl3BmXhcx6JF21QRlriIBNqqvEUfXUO738K/PV/NKrwDMw9kAD6zwb9PFbFroDL/4n8cecGx9H02xcmEgFaE7E1aVh4yIJmZSl20/tiqUy0Xl7lrILK1OH0ALwOI7ISrrCE5YG/XQLri5IBOIerL7m3DPaA93Hsou8ZPHXJWa6tNqxei88QTztl2cav+MUY74GdNsdNcTGk2YNk3rIUuo8Rs5xkmjQUUKh1ouf++mqyjpLzlQtDKMIqXOcYisGGPqIwTJGfUekB6qhTZXUTauEATa/rDFf+Ot6YweNUHtR6Mhb8MRef8KIwSbqJlhSJyArleAOtwJi2bxhRlk/ZKqhe8Oh45l376wamiEqS8s45fRLmV3Jvxd0Zwehealcv2laU0ZIynlmElhdMLRyYHG1iTMTnr2A5T22ArJ6Mcgm1nmpOpUYDodmVQhkvDxyOVWNcMcMp0wTXsncjDq6Dc6AMrmRrESmOd4hzsQZppTX2FXGy+gok2jxHujLZyfqa4m0SgVSfCFJd09R8wBbhOC4RRjNMbmH0i2ws6APOYDYUl1D+VcIFqU=
